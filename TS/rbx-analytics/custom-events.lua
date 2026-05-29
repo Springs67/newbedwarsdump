@@ -1,0 +1,39 @@
+local v1 = {}
+local v2 = setmetatable({}, {
+    ["__index"] = v1
+})
+v2.CLAN_CREATED = "clan_created"
+v1.clan_created = "CLAN_CREATED"
+v2.CLAN_JOINED = "clan_joined"
+v1.clan_joined = "CLAN_JOINED"
+v2.TELEPORT_TO_ISLANDS = "teleport_to_islands"
+v1.teleport_to_islands = "TELEPORT_TO_ISLANDS"
+v2.DISCORD_VERIFIED = "discord_verified"
+v1.discord_verified = "DISCORD_VERIFIED"
+v2.ACTIVATE_KIT_CHECK_FAIL = "activate_kit_check_fail"
+v1.activate_kit_check_fail = "ACTIVATE_KIT_CHECK_FAIL"
+v2.CLAN_KIT_SHOP_PURCHASE = "clan_kit_shop_purchase"
+v1.clan_kit_shop_purchase = "CLAN_KIT_SHOP_PURCHASE"
+v2.ANALYTICS_1 = "analytics_1"
+v1.analytics_1 = "ANALYTICS_1"
+v2.ANALYTICS_2 = "analytics_2"
+v1.analytics_2 = "ANALYTICS_2"
+v2.NET_RATE_LIMIT = "net_rate_limit"
+v1.net_rate_limit = "NET_RATE_LIMIT"
+v2.QUEUE_TIMES = "queue_times"
+v1.queue_times = "QUEUE_TIMES"
+v2.KIT_USAGE = "kit_usage"
+v1.kit_usage = "KIT_USAGE"
+v2.KIT_PLACEMENTS = "kit_placements"
+v1.kit_placements = "KIT_PLACEMENTS"
+v2.MATCH_DURATION = "match_duration"
+v1.match_duration = "MATCH_DURATION"
+v2.BEDCOIN_PRODUCT_PURCHASE = "bedcoin_product_purchase"
+v1.bedcoin_product_purchase = "BEDCOIN_PRODUCT_PURCHASE"
+v2.RANKED_KIT_BAN = "ranked_kit_ban"
+v1.ranked_kit_ban = "RANKED_KIT_BAN"
+v2.RANKED_RP = "ranked_rp"
+v1.ranked_rp = "RANKED_RP"
+return {
+    ["CustomEvent"] = v2
+}

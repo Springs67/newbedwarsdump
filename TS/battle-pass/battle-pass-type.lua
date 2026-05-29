@@ -1,0 +1,39 @@
+local v1 = {}
+local v2 = setmetatable({}, {
+    ["__index"] = v1
+})
+v2.season1 = "season1"
+v1.season1 = "season1"
+v2.season2 = "season2"
+v1.season2 = "season2"
+v2.season3 = "season3"
+v1.season3 = "season3"
+v2.season4 = "season4"
+v1.season4 = "season4"
+v2.season5 = "season5"
+v1.season5 = "season5"
+v2.season6 = "season6"
+v1.season6 = "season6"
+v2.season7 = "season7"
+v1.season7 = "season7"
+v2.season8 = "season8"
+v1.season8 = "season8"
+v2.season9 = "season9"
+v1.season9 = "season9"
+v2.season10 = "season10"
+v1.season10 = "season10"
+v2.season11 = "season11"
+v1.season11 = "season11"
+v2.season12 = "season12"
+v1.season12 = "season12"
+v2.season13 = "season13"
+v1.season13 = "season13"
+v2.XMAS_2025 = "xmas_2025"
+v1.xmas_2025 = "XMAS_2025"
+v2.LNY_2026 = "lny_2026"
+v1.lny_2026 = "LNY_2026"
+v2.EASTER_2026 = "easter_2026"
+v1.easter_2026 = "EASTER_2026"
+return {
+    ["BattlePass"] = v2
+}

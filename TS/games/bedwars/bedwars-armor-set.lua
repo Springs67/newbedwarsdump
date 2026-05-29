@@ -1,0 +1,41 @@
+local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType
+return {
+    ["BedWarsArmor"] = {
+        { v1.LEATHER_HELMET, v1.LEATHER_CHESTPLATE, v1.LEATHER_BOOTS },
+        { v1.WARRIOR_HELMET, v1.WARRIOR_CHESTPLATE, v1.WARRIOR_BOOTS },
+        { v1.IRON_HELMET, v1.IRON_CHESTPLATE, v1.IRON_BOOTS },
+        { v1.DIAMOND_HELMET, v1.DIAMOND_CHESTPLATE, v1.DIAMOND_BOOTS },
+        { v1.EMERALD_HELMET, v1.EMERALD_CHESTPLATE, v1.EMERALD_BOOTS },
+        { v1.VOID_HELMET, v1.VOID_CHESTPLATE, v1.VOID_BOOTS }
+    },
+    ["BedwarsArmorSet"] = {
+        ["LEATHER"] = { v1.LEATHER_HELMET, v1.LEATHER_CHESTPLATE, v1.LEATHER_BOOTS },
+        ["IRON"] = { v1.IRON_HELMET, v1.IRON_CHESTPLATE, v1.IRON_BOOTS },
+        ["DIAMOND"] = { v1.DIAMOND_HELMET, v1.DIAMOND_CHESTPLATE, v1.DIAMOND_BOOTS },
+        ["EMERALD"] = { v1.EMERALD_HELMET, v1.EMERALD_CHESTPLATE, v1.EMERALD_BOOTS },
+        ["WARRIOR"] = { v1.WARRIOR_HELMET, v1.WARRIOR_CHESTPLATE, v1.WARRIOR_BOOTS },
+        ["VOID"] = { v1.VOID_HELMET, v1.VOID_CHESTPLATE, v1.VOID_BOOTS }
+    },
+    ["ArmorPieceToChestplateMap"] = {
+        [v1.LEATHER_HELMET] = v1.LEATHER_CHESTPLATE,
+        [v1.LEATHER_BOOTS] = v1.LEATHER_CHESTPLATE,
+        [v1.IRON_HELMET] = v1.IRON_CHESTPLATE,
+        [v1.IRON_BOOTS] = v1.IRON_CHESTPLATE,
+        [v1.DIAMOND_HELMET] = v1.DIAMOND_CHESTPLATE,
+        [v1.DIAMOND_BOOTS] = v1.DIAMOND_CHESTPLATE,
+        [v1.EMERALD_HELMET] = v1.EMERALD_CHESTPLATE,
+        [v1.EMERALD_BOOTS] = v1.EMERALD_CHESTPLATE,
+        [v1.WARRIOR_HELMET] = v1.WARRIOR_CHESTPLATE,
+        [v1.WARRIOR_BOOTS] = v1.WARRIOR_CHESTPLATE,
+        [v1.VOID_HELMET] = v1.VOID_CHESTPLATE,
+        [v1.VOID_BOOTS] = v1.VOID_CHESTPLATE
+    },
+    ["BedwarsArmorChestPlates"] = {
+        v1.LEATHER_CHESTPLATE,
+        v1.IRON_CHESTPLATE,
+        v1.DIAMOND_CHESTPLATE,
+        v1.EMERALD_CHESTPLATE,
+        v1.WARRIOR_CHESTPLATE,
+        v1.VOID_CHESTPLATE
+    }
+}

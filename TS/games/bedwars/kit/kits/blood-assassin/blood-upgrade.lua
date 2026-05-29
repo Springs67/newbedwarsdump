@@ -1,0 +1,31 @@
+local v1 = {}
+local v2 = setmetatable({}, {
+    ["__index"] = v1
+})
+v2.DAMAGE = 1
+v1[1] = "DAMAGE"
+v2.ARMOR_PEN = 2
+v1[2] = "ARMOR_PEN"
+v2.DURATION = 3
+v1[3] = "DURATION"
+v2.TARGET_DAMAGE = 4
+v1[4] = "TARGET_DAMAGE"
+v2.ASSASSIN_INSTINCT = 5
+v1[5] = "ASSASSIN_INSTINCT"
+v2.SERRATED_BLADE = 6
+v1[6] = "SERRATED_BLADE"
+v2.THRILL_OF_THE_HUNT = 7
+v1[7] = "THRILL_OF_THE_HUNT"
+v2.DARK_INSIGHT = 8
+v1[8] = "DARK_INSIGHT"
+v2.SILENCE = 9
+v1[9] = "SILENCE"
+v2.BOUNTY = 10
+v1[10] = "BOUNTY"
+v2.VULNERABLE = 11
+v1[11] = "VULNERABLE"
+v2.ABSOLUTION = 12
+v1[12] = "ABSOLUTION"
+return {
+    ["BloodUpgrade"] = v2
+}

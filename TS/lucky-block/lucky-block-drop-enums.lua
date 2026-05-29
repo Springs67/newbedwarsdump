@@ -1,0 +1,59 @@
+local v1 = {}
+local v2 = setmetatable({}, {
+    ["__index"] = v1
+})
+v2.ZERO = 0
+v1[0] = "ZERO"
+v2.COMMON = 100
+v1[100] = "COMMON"
+v2.UNCOMMON = 60
+v1[60] = "UNCOMMON"
+v2.RARE = 25
+v1[25] = "RARE"
+v2.EPIC = 10
+v1[10] = "EPIC"
+v2.LEGENDARY = 3
+v1[3] = "LEGENDARY"
+local v3 = {}
+local v4 = setmetatable({}, {
+    ["__index"] = v3
+})
+v4.POSITIVE = "positive"
+v3.positive = "POSITIVE"
+v4.NEUTRAL = "neutral"
+v3.neutral = "NEUTRAL"
+v4.NEGATIVE = "negative"
+v3.negative = "NEGATIVE"
+local v5 = {}
+local v6 = setmetatable({}, {
+    ["__index"] = v5
+})
+v6.ONE_BLOCK = "one_block"
+v5.one_block = "ONE_BLOCK"
+v6.NORMAL = "normal"
+v5.normal = "NORMAL"
+v6.COSMIC = "cosmic"
+v5.cosmic = "COSMIC"
+v6.NEW_YEARS = "new_years"
+v5.new_years = "NEW_YEARS"
+v6.RAINBOW = "rainbow"
+v5.rainbow = "RAINBOW"
+v6.FLYING = "flying"
+v5.flying = "FLYING"
+v6.FOOD = "food"
+v5.food = "FOOD"
+v6.HALLOWEEN = "halloween"
+v5.halloween = "HALLOWEEN"
+v6.FORGE = "forge"
+v5.forge = "FORGE"
+v6.MAGICAL_HERO = "magical_hero"
+v5.magical_hero = "MAGICAL_HERO"
+v6.MAGICAL_VILLAIN = "magical_villain"
+v5.magical_villain = "MAGICAL_VILLAIN"
+v6.GLITCH = "glitch"
+v5.glitch = "GLITCH"
+return {
+    ["LuckyBlockRarity"] = v2,
+    ["LuckyBlockPolarity"] = v4,
+    ["LuckyBlockCategory"] = v6
+}

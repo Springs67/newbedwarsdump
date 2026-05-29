@@ -1,0 +1,72 @@
+local v1 = {}
+local v2 = setmetatable({}, {
+    ["__index"] = v1
+})
+v2.FIRE = "fire"
+v1.fire = "FIRE"
+v2.STATIC = "static"
+v1.static = "STATIC"
+v2.EXECUTE = "execute"
+v1.execute = "EXECUTE"
+v2.CRITICAL_STRIKE = "critical_strike"
+v1.critical_strike = "CRITICAL_STRIKE"
+v2.FOREST = "forest"
+v1.forest = "FOREST"
+v2.SOUL_REAVER = "soul_reaver"
+v1.soul_reaver = "SOUL_REAVER"
+v2.BERSERKER = "berserker"
+v1.berserker = "BERSERKER"
+v2.CLEAVE = "cleave"
+v1.cleave = "CLEAVE"
+local v3 = {}
+local v4 = setmetatable({}, {
+    ["__index"] = v3
+})
+v4.FIRE = 0
+v3[0] = "FIRE"
+v4.STATIC = 1
+v3[1] = "STATIC"
+v4.EXECUTE = 2
+v3[2] = "EXECUTE"
+v4.CRITICAL = 3
+v3[3] = "CRITICAL"
+v4.FOREST = 4
+v3[4] = "FOREST"
+v4.BERSERKER = 5
+v3[5] = "BERSERKER"
+local v5 = {}
+local v6 = setmetatable({}, {
+    ["__index"] = v5
+})
+v6.BLOCKING = "blocking"
+v5.blocking = "BLOCKING"
+v6.ABSORPTION = "absorption"
+v5.absorption = "ABSORPTION"
+v6.FROST = "frost"
+v5.frost = "FROST"
+v6.SAFEGUARD = "safeguard"
+v5.safeguard = "SAFEGUARD"
+v6.CLOUD = "cloud"
+v5.cloud = "CLOUD"
+v6.SWIFT = "swift"
+v5.swift = "SWIFT"
+v6.ENDURANCE = "endurance"
+v5.endurance = "ENDURANCE"
+local v7 = {}
+local v8 = setmetatable({}, {
+    ["__index"] = v7
+})
+v8.HEAVY_HITTER = "heavy_hitter"
+v7.heavy_hitter = "HEAVY_HITTER"
+v8.EXPLOSIVE = "explosive"
+v7.explosive = "EXPLOSIVE"
+v8.CRITICAL_STRIKE = "critical_strike"
+v7.critical_strike = "CRITICAL_STRIKE"
+v8.EFFICIENCY = "efficiency"
+v7.efficiency = "EFFICIENCY"
+return {
+    ["WeaponEnchantType"] = v2,
+    ["EnchantElement"] = v4,
+    ["ArmorEnchantType"] = v6,
+    ["ToolEnchantType"] = v8
+}

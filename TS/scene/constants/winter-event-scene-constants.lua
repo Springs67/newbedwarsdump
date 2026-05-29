@@ -1,0 +1,49 @@
+local v1 = {}
+local v2 = setmetatable({}, {
+    ["__index"] = v1
+})
+v2.FROZEN = 0
+v1[0] = "FROZEN"
+v2.IDLE = 1
+v1[1] = "IDLE"
+v2.MOVING = 2
+v1[2] = "MOVING"
+v2.SPIN = 3
+v1[3] = "SPIN"
+v2.DEAD = 4
+v1[4] = "DEAD"
+v2.DASH_ATTACK = 5
+v1[5] = "DASH_ATTACK"
+v2.SUMMON_ICICLES = 6
+v1[6] = "SUMMON_ICICLES"
+v2.SUMMON_SLAM = 7
+v1[7] = "SUMMON_SLAM"
+v2.AXE_THROW = 8
+v1[8] = "AXE_THROW"
+v2.CHARGE = 9
+v1[9] = "CHARGE"
+v2.AXE_SPIN = 10
+v1[10] = "AXE_SPIN"
+v2.SUMMON_PENGUIN = 11
+v1[11] = "SUMMON_PENGUIN"
+local v3 = {}
+local v4 = setmetatable({}, {
+    ["__index"] = v3
+})
+v4.MOVE = 0
+v3[0] = "MOVE"
+v4.DROP_ICICLES = 1
+v3[1] = "DROP_ICICLES"
+v4.CREATE_FROST = 2
+v3[2] = "CREATE_FROST"
+v4.CREATE_SPIKES = 3
+v3[3] = "CREATE_SPIKES"
+v4.PULL_TO_CENTER = 4
+v3[4] = "PULL_TO_CENTER"
+v4.THROW_AXE = 5
+v3[5] = "THROW_AXE"
+return {
+    ["WINTER_BOSS_TAG"] = "WinterBoss",
+    ["BossState"] = v2,
+    ["BossAction"] = v4
+}

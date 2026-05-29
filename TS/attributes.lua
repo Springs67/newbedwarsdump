@@ -1,0 +1,32 @@
+local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"))
+local v2 = v1.import(script, game:GetService("ReplicatedStorage"), "rbxts_include", "node_modules", "@rbxts", "t", "lib", "ts").t
+local v3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "typesafe-attributes").Attribute
+return {
+    ["NpcNameAttr"] = v3.new("NpcName", v2.optional(v2.string)),
+    ["NpcAutoPlaceAttr"] = v3.new("AutomaticPlace", v2.optional(v2.boolean)),
+    ["NpcAnimationAttr"] = v3.new("NpcAnimation", v2.optional(v2.string)),
+    ["NpcSecondaryAnimationAttr"] = v3.new("NpcSecondaryAnimation", v2.optional(v2.string)),
+    ["NpcLookAtPlayerAttr"] = v3.new("NpcLookAtPlayer", v2.optional(v2.boolean)),
+    ["NpcDisableCollisionsAttr"] = v3.new("NpcDisableCollisions", v2.optional(v2.boolean)),
+    ["NpcBoxCollisionAttr"] = v3.new("NpcBoxCollision", v2.optional(v2.boolean)),
+    ["NpcLookMinDistanceAttr"] = v3.new("NpcLookMinimumDistance", v2.optional(v2.number)),
+    ["NpcScale"] = v3.new("NpcScale", v2.optional(v2.number)),
+    ["NpcCollectionServiceTag"] = v3.new("NpcCollectionServiceTag", v2.optional(v2.string)),
+    ["NpcVerticalOffset"] = v3.new("NpcVerticalOffset", v2.optional(v2.number)),
+    ["TeamIdAttr"] = v3.new("TeamId", v2.optional(v2.string)),
+    ["FriendlyFireAttr"] = v3.new("FriendlyFire", v2.optional(v2.boolean)),
+    ["ItemUpgradeTierAttr"] = v3.new("ItemUpgradeTier", v2.optional(v2.number)),
+    ["MergedItemsCountAttr"] = v3.new("MergedItemsCount", v2.optional(v2.number)),
+    ["InfectedTankPointsAttr"] = v3.new("InfectedTankPoints", v2.optional(v2.number)),
+    ["InfectedDisruptorPointsAttr"] = v3.new("InfectedDisruptorPoints", v2.optional(v2.number)),
+    ["InfectedRushPointsAttr"] = v3.new("InfectedRushPoints", v2.optional(v2.number)),
+    ["InfectedProwlerPointsAttr"] = v3.new("InfectedProwlerPoints", v2.optional(v2.number)),
+    ["LifeForceAttr"] = v3.new("LifeForce", v2.optional(v2.number)),
+    ["SpiritGardenerEnergyAttr"] = v3.new("SpiritGardenerEnergy", v2.optional(v2.number)),
+    ["SkatingSpeedAttr"] = v3.new("SkatingSpeedAnimation", v2.optional(v2.string)),
+    ["SkatingJumpReadyAttr"] = v3.new("SkatingJumpReady", v2.optional(v2.boolean)),
+    ["ManaAttr"] = v3.new("Mana", v2.optional(v2.number)),
+    ["CatStaminaAttr"] = v3.new("CatStamina", v2.optional(v2.number)),
+    ["FallDamageStartYOverrideAttr"] = v3.new("FallDamageStartYOverride", v2.optional(v2.number)),
+    ["FallDamagePeakYOverrideAttr"] = v3.new("FallDamagePeakYOverride", v2.optional(v2.number))
+}

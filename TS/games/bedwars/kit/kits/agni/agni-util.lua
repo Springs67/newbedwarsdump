@@ -1,0 +1,17 @@
+return {
+    ["AgniKitUtil"] = {
+        ["ROCKET_UPDRAFT_IMPULSE"] = Vector3.new(0, 40, 0),
+        ["ROCKET_NEGATE_FALL_DAMAGE_COOLDOWN"] = 4,
+        ["MAX_CLUSTER_NADE_SIZE"] = 5,
+        ["CLUSTER_INTERVAL"] = 35,
+        ["ROCKET_ENEMY_EXPLOSION_RADIUS"] = 15,
+        ["ROCKET_ENEMY_KNOCKBACK"] = Vector3.new(10, 20, 10),
+        ["ROCKET_ENEMY_DAMAGE"] = 12,
+        ["ROCKET_ABILITY_COOLDOWN"] = 13,
+        ["CLUSTER_BOMB_DIRECT_IMPACT_DAMAGE"] = 18,
+        ["CLUSTER_MINI_BOMB_COUNT"] = 10,
+        ["CLUSTER_BOMB_EXPLODE_TIME"] = 1.5,
+        ["CLUSTER_MINI_BOMB_EXPLOSION_RADIUS"] = 10,
+        ["CLUSTER_MINI_BOMB_DAMAGE"] = 12
+    }
+}
