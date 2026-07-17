@@ -1,239 +1,267 @@
-local u1 = require(script.Parent.Promise)
-local u2 = game:GetService("RunService")
-local u11 = {
-    ["Promise"] = u1,
-    ["getModule"] = function(p3, p4, p5) --[[ Name: getModule, Line 17 ]]
-        --[[
-        Upvalues:
-            [1] = u2
-        --]]
-        local v6
-        if p5 == nil then
-            v6 = "@rbxts"
-        else
-            v6 = p4
-            p4 = p5
-        end
-        if u2:IsRunning() and u2:IsClient() then
-            local v7 = u2:IsStudio()
-            if v7 then
-                v7 = p3:FindFirstAncestorWhichIsA("Plugin") ~= nil
-            end
-            if not (v7 or game:IsLoaded()) then
-                game.Loaded:Wait()
-            end
-        end
-        while true do
-            local v8 = p3:FindFirstChild("node_modules")
-            if v8 then
-                local v9 = v8:FindFirstChild(v6)
-                local v10 = v9 and v9:FindFirstChild(p4)
-                if v10 then
-                    return v10
-                end
-            end
-            p3 = p3.Parent
-            if p3 == nil then
-                error("roblox-ts: " .. "Could not find module: " .. p4, 2)
-                return
-            end
-        end
-    end
-}
-local u12 = {}
-local u13 = {}
-function u11.import(p14, p15, ...) --[[ Line: 51 ]]
-    --[[
-    Upvalues:
-        [1] = u12
-        [2] = u13
-        [3] = u11
-    --]]
-    for v16 = 1, select("#", ...) do
-        p15 = p15:WaitForChild((select(v16, ...)))
-    end
-    if p15.ClassName ~= "ModuleScript" then
-        error("roblox-ts: " .. "Failed to import! Expected ModuleScript, got " .. p15.ClassName, 2)
-    end
-    u12[p14] = p15
-    local v17 = p15
-    local v18 = 0
-    while p15 do
-        v18 = v18 + 1
-        p15 = u12[p15]
-        if p15 == v17 then
-            local v19 = p15.Name
-            for _ = 1, v18 do
-                p15 = u12[p15]
-                v19 = v19 .. "  \226\135\146 " .. p15.Name
-            end
-            error("roblox-ts: " .. "Failed to import! Detected a circular dependency chain: " .. v19, 2)
-        end
-    end
-    if not u13[v17] then
-        if _G[v17] then
-            error("roblox-ts: " .. "Invalid module access! Do you have multiple TS runtimes trying to import this? " .. v17:GetFullName(), 2)
-        end
-        _G[v17] = u11
-        u13[v17] = true
-    end
-    local v20 = require(v17)
-    if u12[p14] == v17 then
-        u12[p14] = nil
-    end
-    return v20
-end
-function u11.instanceof(p21, p22) --[[ Line: 111 ]]
-    if type(p22) == "table" then
-        local v23 = p22.instanceof
-        if type(v23) == "function" then
-            return p22.instanceof(p21)
-        end
-    end
-    if type(p21) == "table" then
-        local v24 = getmetatable(p21)
-        while v24 ~= nil do
-            if v24 == p22 then
-                return true
-            end
-            local v25 = getmetatable(v24)
-            if v25 then
-                v24 = v25.__index
+-- Decompiled with Potassium's decompiler.
+
+local Promise = require(script.Parent.Promise);
+local RunService = game:GetService("RunService");
+local u1 = {
+    Promise = Promise
+};
+
+local function isPlugin(p2) -- Line: 13
+    -- upvalues: RunService (copy)
+    local v3 = RunService:IsStudio() and p2:FindFirstAncestorWhichIsA("Plugin") ~= nil;
+
+    return v3;
+end;
+
+function u1.getModule(p4, p5, p6) -- Line: 17
+    -- upvalues: RunService (copy)
+    local v7;
+
+    if p6 == nil then
+        v7 = "@rbxts";
+    else
+        v7 = p5;
+        p5 = p6;
+    end;
+
+    if RunService:IsRunning() and RunService:IsClient() then
+        local v8 = RunService:IsStudio() and p4:FindFirstAncestorWhichIsA("Plugin") ~= nil;
+
+        if not (v8 or game:IsLoaded()) then
+            game.Loaded:Wait();
+        end;
+    end;
+
+    while true do
+        local node_modules = p4:FindFirstChild("node_modules");
+
+        if node_modules then
+            local v9 = node_modules:FindFirstChild(v7);
+            local v10 = v9 and v9:FindFirstChild(p5);
+
+            if v10 then
+                return v10;
+            end;
+        end;
+
+        p4 = p4.Parent;
+
+        if p4 == nil then
+            error("roblox-ts: " .. "Could not find module: " .. p5, 2);
+
+            return;
+        end;
+    end;
+end;
+
+local u11 = {};
+local u12 = {};
+
+function u1.import(p13, p14, ...) -- Line: 51
+    -- upvalues: u11 (copy), u12 (copy), u1 (copy)
+    for i = 1, select("#", ...) do
+        p14 = p14:WaitForChild((select(i, ...)));
+    end;
+
+    if p14.ClassName ~= "ModuleScript" then
+        error("roblox-ts: " .. "Failed to import! Expected ModuleScript, got " .. p14.ClassName, 2);
+    end;
+
+    u11[p13] = p14;
+    local v15 = p14;
+    local v16 = 0;
+
+    while p14 do
+        v16 = v16 + 1;
+        p14 = u11[p14];
+
+        if p14 == v15 then
+            local Name = p14.Name;
+
+            for _ = 1, v16 do
+                p14 = u11[p14];
+                Name = Name .. "  ⇒ " .. p14.Name;
+            end;
+
+            error("roblox-ts: " .. "Failed to import! Detected a circular dependency chain: " .. Name, 2);
+        end;
+    end;
+
+    if not u12[v15] then
+        if _G[v15] then
+            error("roblox-ts: " .. "Invalid module access! Do you have multiple TS runtimes trying to import this? " .. v15:GetFullName(), 2);
+        end;
+
+        _G[v15] = u1;
+        u12[v15] = true;
+    end;
+
+    local v17 = require(v15);
+
+    if u11[p13] == v15 then
+        u11[p13] = nil;
+    end;
+
+    return v17;
+end;
+
+function u1.instanceof(p18, p19) -- Line: 111
+    if type(p19) == "table" and type(p19.instanceof) == "function" then
+        return p19.instanceof(p18);
+    end;
+
+    if type(p18) == "table" then
+        local v20 = getmetatable(p18);
+
+        while v20 ~= nil do
+            if v20 == p19 then
+                return true;
+            end;
+
+            local v21 = getmetatable(v20);
+
+            if v21 then
+                v20 = v21.__index;
             else
-                v24 = nil
-            end
-        end
-    end
-    return false
-end
-function u11.async(u26) --[[ Line: 136 ]]
-    --[[
-    Upvalues:
-        [1] = u1
-    --]]
-    return function(...) --[[ Line: 137 ]]
-        --[[
-        Upvalues:
-            [1] = u1
-            [2] = u26
-        --]]
-        local u27 = select("#", ...)
-        local u28 = { ... }
-        return u1.new(function(u29, u30) --[[ Line: 140 ]]
-            --[[
-            Upvalues:
-                [1] = u26
-                [2] = u28
-                [3] = u27
-            --]]
-            coroutine.wrap(function() --[[ Line: 141 ]]
-                --[[
-                Upvalues:
-                    [1] = u26
-                    [2] = u28
-                    [3] = u27
-                    [4] = u29
-                    [5] = u30
-                --]]
-                local v31 = u28
-                local v32 = u27
-                local v33, v34 = pcall(u26, unpack(v31, 1, v32))
-                if v33 then
-                    u29(v34)
-                else
-                    u30(v34)
-                end
-            end)()
-        end)
-    end
-end
-function u11.await(p35) --[[ Line: 153 ]]
-    --[[
-    Upvalues:
-        [1] = u1
-    --]]
-    if u1.is(p35) then
-        local v36, v37 = p35:awaitStatus()
-        if v36 == u1.Status.Resolved then
-            return v37
-        elseif v36 == u1.Status.Rejected then
-            error(v37, 2)
-        else
-            error("The awaited Promise was cancelled", 2)
-        end
+                v20 = nil;
+            end;
+        end;
+    end;
+
+    return false;
+end;
+
+function u1.async(u22) -- Line: 136
+    -- upvalues: Promise (copy)
+    return function(...) -- Line: 137
+        -- upvalues: Promise (ref), u22 (copy)
+        local u23 = select("#", ...);
+        local u24 = { ... };
+
+        return Promise.new(function(u25, u26) -- Line: 140
+            -- upvalues: u22 (ref), u24 (copy), u23 (copy)
+            coroutine.wrap(function() -- Line: 141
+                -- upvalues: u22 (ref), u24 (ref), u23 (ref), u25 (copy), u26 (copy)
+                local success, result = pcall(u22, unpack(u24, 1, u23));
+
+                if success then
+                    u25(result);
+
+                    return;
+                end;
+
+                u26(result);
+            end)();
+        end);
+    end;
+end;
+
+function u1.await(p27) -- Line: 153
+    -- upvalues: Promise (copy)
+    if not Promise.is(p27) then
+        return p27;
+    end;
+
+    local v28, v29 = p27:awaitStatus();
+
+    if v28 == Promise.Status.Resolved then
+        return v29;
+    end;
+
+    if v28 == Promise.Status.Rejected then
+        error(v29, 2);
+
+        return;
+    end;
+
+    error("The awaited Promise was cancelled", 2);
+end;
+
+local function bit_sign(p30) -- Line: 170
+    if bit32.btest(p30, 2147483648) then
+        return p30 - 4294967296;
+    end;
+
+    return p30;
+end;
+
+function u1.bit_lrsh(p31, p32) -- Line: 179
+    local v33 = bit32.arshift(p31, p32);
+
+    if bit32.btest(v33, 2147483648) then
+        return v33 - 4294967296;
+    end;
+
+    return v33;
+end;
+
+u1.TRY_RETURN = 1;
+u1.TRY_BREAK = 2;
+u1.TRY_CONTINUE = 3;
+
+function u1.try(p34, p35, p36) -- Line: 187
+    local u37 = nil;
+    local u38 = nil;
+    local v40, v41, v42 = xpcall(p34, function(p39) -- Line: 191
+        -- upvalues: u37 (ref), u38 (ref)
+        u37 = p39;
+        u38 = debug.traceback();
+    end);
+    local v43, v44;
+
+    if v40 or not p35 then
+        v43 = v42;
+        v44 = v41;
     else
-        return p35
-    end
-end
-function u11.bit_lrsh(p38, p39) --[[ Line: 179 ]]
-    local v40 = bit32.arshift(p38, p39)
-    if bit32.btest(v40, 2147483648) then
-        return v40 - 4294967296
+        v44, v43 = p35(u37, u38);
+
+        if not v44 then
+            v43 = v42;
+            v44 = v41;
+        end;
+    end;
+
+    local v45, v46;
+
+    if p36 then
+        v45, v46 = p36();
+
+        if not v45 then
+            v46 = v43;
+            v45 = v44;
+        end;
     else
-        return v40
-    end
-end
-u11.TRY_RETURN = 1
-u11.TRY_BREAK = 2
-u11.TRY_CONTINUE = 3
-function u11.try(p41, p42, p43) --[[ Line: 187 ]]
-    local u44 = nil
-    local u45 = nil
-    local v47, v48, v49 = xpcall(p41, function(p46) --[[ Line: 191 ]]
-        --[[
-        Upvalues:
-            [1] = u44
-            [2] = u45
-        --]]
-        u44 = p46
-        u45 = debug.traceback()
-    end)
-    local v50, v51
-    if v47 or not p42 then
-        v50 = v49
-        v51 = v48
-    else
-        v51, v50 = p42(u44, u45)
-        if not v51 then
-            v50 = v49
-            v51 = v48
-        end
-    end
-    local v52, v53
-    if p43 then
-        v52, v53 = p43()
-        if not v52 then
-            v53 = v50
-            v52 = v51
-        end
-    else
-        v53 = v50
-        v52 = v51
-    end
-    return v52, v53
-end
-function u11.generator(p54) --[[ Line: 211 ]]
-    local u55 = coroutine.create(p54)
+        v46 = v43;
+        v45 = v44;
+    end;
+
+    return v45, v46;
+end;
+
+function u1.generator(p47) -- Line: 211
+    local u48 = coroutine.create(p47);
+
     return {
-        ["next"] = function(...) --[[ Name: next, Line 214 ]]
-            --[[
-            Upvalues:
-                [1] = u55
-            --]]
-            if coroutine.status(u55) == "dead" then
+        next = function(...) -- Line: 214, Name: next
+            -- upvalues: u48 (copy)
+            if coroutine.status(u48) == "dead" then
                 return {
-                    ["done"] = true
-                }
-            end
-            local v56, v57 = coroutine.resume(u55, ...)
-            if v56 == false then
-                error(v57, 2)
-            end
+                    done = true
+                };
+            end;
+
+            local v49, v50 = coroutine.resume(u48, ...);
+
+            if v49 == false then
+                error(v50, 2);
+            end;
+
             return {
-                ["value"] = v57,
-                ["done"] = coroutine.status(u55) == "dead"
-            }
+                value = v50,
+                done = coroutine.status(u48) == "dead"
+            };
         end
-    }
-end
-return u11
+    };
+end;
+
+return u1;

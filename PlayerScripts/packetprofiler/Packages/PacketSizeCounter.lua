@@ -1,0 +1,3 @@
+-- Decompiled with Potassium's decompiler.
+
+return require(script.Parent._Index["pysephwasntavailable_remotepacketsizecounter@2.4.1"].remotepacketsizecounter);
